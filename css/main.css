@@ -1197,7 +1197,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0812ff;
+  background: #ffff30;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1287,11 +1287,11 @@ pre .javascript .function {
   color: #f5f5f5;
 }
 .sidebar-nav .sidebar-nav-active {
-  border-bottom-color: #e0533c;
-  color: #e0533c;
+  border-bottom-color: #f5f5f5;
+  color: #f5f5f5;
 }
 .sidebar-nav .sidebar-nav-active:hover {
-  color: #e0533c;
+  color: #f5f5f5;
 }
 .sidebar-panel {
   display: none;
@@ -1320,7 +1320,7 @@ pre .javascript .function {
   }
 }
 .sidebar-toggle:hover .toggle-line {
-  background: #e0533c;
+  background: #f5f5f5;
 }
 .post-toc {
   font-size: 0.875em;
@@ -1359,14 +1359,14 @@ pre .javascript .function {
   display: block;
 }
 .post-toc .nav .active > a {
-  border-bottom-color: #e0533c;
-  color: #e0533c;
+  border-bottom-color: #f5f5f5;
+  color: #f5f5f5;
 }
 .post-toc .nav .active-current > a {
-  color: #e0533c;
+  color: #f5f5f5;
 }
 .post-toc .nav .active-current > a:hover {
-  color: #e0533c;
+  color: #f5f5f5;
 }
 .site-state {
   display: flex;
@@ -1529,7 +1529,7 @@ pre .javascript .function {
   display: none;
 }
 .back-to-top:hover {
-  color: #e0533c;
+  color: #f5f5f5;
 }
 .back-to-top.back-to-top-on {
   bottom: 19px;

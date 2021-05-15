@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"enkerewpo.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="T5 - Luogu 4155 [SCOI2015] 国旗计划 题解 第7组 题目大意 选出尽量少的区间完全覆盖一个环，输出每个区间强制选的答案，\(n\leq 2\times10^5,M\leq 10^9\). 题解  把所有战士从 \([1,m]\) 复制到 \([1,2m]\)，对应端点加 \(m\)，把 \(n\) 个节点都复制一遍. 由于区间不包含，则我们可以把所有区间按左">
+  <meta name="description" content="题目链接：Luogu P4155 [SCOI2015]国旗计划  T5 - Luogu 4155 [SCOI2015] 国旗计划 题解 第7组 题目大意 选出尽量少的区间完全覆盖一个环，输出每个区间强制选的答案，\(n\leq 2\times10^5,M\leq 10^9\). 题解  把所有战士从 \([1,m]\) 复制到 \([1,2m]\)，对应端点加 \(m\)，把 \(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Luogu P4155 [SCOI2015]国旗计划">
+<meta property="og:title" content="Luogu P4155 [SCOI2015]国旗计划 题解">
 <meta property="og:url" content="https://enkerewpo.top/2021/05/15/NWPU-ACM-04/index.html">
 <meta property="og:site_name" content="Kvar_ispw17&#39;s blog">
-<meta property="og:description" content="T5 - Luogu 4155 [SCOI2015] 国旗计划 题解 第7组 题目大意 选出尽量少的区间完全覆盖一个环，输出每个区间强制选的答案，\(n\leq 2\times10^5,M\leq 10^9\). 题解  把所有战士从 \([1,m]\) 复制到 \([1,2m]\)，对应端点加 \(m\)，把 \(n\) 个节点都复制一遍. 由于区间不包含，则我们可以把所有区间按左">
+<meta property="og:description" content="题目链接：Luogu P4155 [SCOI2015]国旗计划  T5 - Luogu 4155 [SCOI2015] 国旗计划 题解 第7组 题目大意 选出尽量少的区间完全覆盖一个环，输出每个区间强制选的答案，\(n\leq 2\times10^5,M\leq 10^9\). 题解  把所有战士从 \([1,m]\) 复制到 \([1,2m]\)，对应端点加 \(m\)，把 \(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-15T01:22:07.000Z">
-<meta property="article:modified_time" content="2021-05-15T01:42:00.132Z">
+<meta property="article:modified_time" content="2021-05-15T02:34:29.385Z">
 <meta property="article:author" content="Kvar_ispw17">
 <meta property="article:tag" content="排序">
 <meta property="article:tag" content="贪心">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>Luogu P4155 [SCOI2015]国旗计划 | Kvar_ispw17's blog</title>
+  <title>Luogu P4155 [SCOI2015]国旗计划 题解 | Kvar_ispw17's blog</title>
   
 
 
@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">6</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">5</span></a>
 
   </li>
   </ul>
@@ -181,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Luogu P4155 [SCOI2015]国旗计划
+          Luogu P4155 [SCOI2015]国旗计划 题解
         </h1>
 
         <div class="post-meta">
@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-05-15 09:22:07 / Modified: 09:42:00" itemprop="dateCreated datePublished" datetime="2021-05-15T09:22:07+08:00">2021-05-15</time>
+              <time title="Created: 2021-05-15 09:22:07 / Modified: 10:34:29" itemprop="dateCreated datePublished" datetime="2021-05-15T09:22:07+08:00">2021-05-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,7 +215,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="t5---luogu-4155-scoi2015-国旗计划-题解">T5 - Luogu 4155 [SCOI2015] 国旗计划 题解</h1>
+        <p>题目链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4155">Luogu P4155 [SCOI2015]国旗计划</a></p>
+<hr />
+<h1 id="t5---luogu-4155-scoi2015-国旗计划-题解">T5 - Luogu 4155 [SCOI2015] 国旗计划 题解</h1>
 <p>第7组</p>
 <h2 id="题目大意">题目大意</h2>
 <p>选出尽量少的区间完全覆盖一个环，输出每个区间强制选的答案，<span class="math inline">\(n\leq 2\times10^5,M\leq 10^9\)</span>.</p>
@@ -243,7 +245,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://enkerewpo.top/2021/05/15/NWPU-ACM-04/" title="Luogu P4155 [SCOI2015]国旗计划">https://enkerewpo.top/2021/05/15/NWPU-ACM-04/</a>
+    <a href="https://enkerewpo.top/2021/05/15/NWPU-ACM-04/" title="Luogu P4155 [SCOI2015]国旗计划 题解">https://enkerewpo.top/2021/05/15/NWPU-ACM-04/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -265,10 +267,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/15/NWPU-ACM-03/" rel="prev" title="Codeforces 1451E1 Bitwise Queries (Easy Version)">
-      <i class="fa fa-chevron-left"></i> Codeforces 1451E1 Bitwise Queries (Easy Version)
+    <a href="/2021/05/15/NWPU-ACM-03/" rel="prev" title="Codeforces 1451E1 Bitwise Queries (Easy Version) 题解">
+      <i class="fa fa-chevron-left"></i> Codeforces 1451E1 Bitwise Queries (Easy Version) 题解
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/15/LOJ-6343/" rel="next" title="LibreOJ 6343. Sally Face 与地牢 题解">
+      LibreOJ 6343. Sally Face 与地牢 题解 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -343,7 +348,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -356,7 +361,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
