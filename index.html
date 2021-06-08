@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">5</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">7</span></a>
 
   </li>
   </ul>
@@ -156,6 +156,168 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/06/08/NWPU-ACM-06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/pics/kv.png">
+      <meta itemprop="name" content="Kvar_ispw17">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kvar_ispw17's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/08/NWPU-ACM-06/" class="post-title-link" itemprop="url">HDU 3085 Nightmare Ⅱ 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-06-08 19:02:13 / Modified: 19:10:04" itemprop="dateCreated datePublished" datetime="2021-06-08T19:02:13+08:00">2021-06-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目链接：<a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=3085">HDU 3085 Nightmare Ⅱ</a></p>
+<hr />
+<h2 id="题目大意">题目大意</h2>
+<p>​ 给一个地图，有些地方不能走。二明和他的女朋友被两个鬼追，所以他们二人希望尽快团聚。每个单位时间，二明可以走 <span class="math inline">\(3\)</span> 步，女朋友可以走 <span class="math inline">\(1\)</span> 步，人类不能穿墙。每一个单位时间鬼可以分裂，并占据当前状态向外拓展 <span class="math inline">\(2\)</span> 步的所有地点覆盖。问二人幸福美满快乐地团聚所需的最小时间。</p>
+<h2 id="题解">题解</h2>
+<ol type="1">
+<li><p><strong>如何判断当前位置是否有鬼？</strong></p>
+<p>由于鬼可以穿墙，我们发现利用两点之间的折线距离——即曼哈顿距离 <span class="math inline">\(\text{dis} = |x_1-x_2|+|y_1-y_2|\)</span> 可以直接判断：设当前时刻为 <span class="math inline">\(t\)</span>，如果该点到某一个鬼的位置折线距离 <span class="math inline">\(\text{dis} \leq 2t\)</span>，说明该点被鬼的分身已经占据。</p></li>
+<li><p><strong>怎么在一个单位时间让两人走不同的步数？</strong></p>
+<p>注意到，在传统 <span class="math inline">\(\text{bfs}\)</span> 中，我们每次取队首，得到新的合法位置，然后就直接把新的位置放到了队尾，从而没法考虑步数的问题。 现在我们在传统 <span class="math inline">\(\text{bfs}\)</span> 中再加入一个临时队列 <span class="math inline">\(\text{tmp}\)</span>，并且每次取当前队列 <span class="math inline">\(q\)</span> 得到下一步的所有位置，并把<strong>下一步</strong>的所有位置加入临时队列 <span class="math inline">\(\text{tmp}\)</span>，以保证每次只考虑<strong>走一步</strong>，最后再 <span class="math inline">\(q = \text{tmp}\)</span>，重复该过程 <span class="math inline">\(k\)</span> 次，就代表一共连续考虑了 <span class="math inline">\(k\)</span> 步。</p></li>
+<li><p><strong>其他小细节？</strong></p>
+<p>开一个数组 <span class="math inline">\(\text{d}[4][2]\)</span> 存坐标的变化：<span class="math inline">\(\{0,1,0,-1,1,0,-1,1\}\)</span>，使拓展新坐标时代码简洁。 当二人存当前状态的队列均为空时退出，设一个布尔变量判断是否相遇并输出当前的时刻（由于<strong>步长相同</strong>，所以该时刻满足一定是最短时间）。 （最开始样例的第三组数据总是 <span class="math inline">\(\text{WA}\)</span> ，结果发现一个大 <span class="math inline">\(\text{bug}\)</span>：当前队列里的点可能在上一个点还没有鬼占据，但是这一个时刻可能已经非法了！于是我又写了一个 <span class="math inline">\(\text{check_ghost()}\)</span> 专门判断是不是有鬼占据……）</p></li>
+</ol>
+<h2 id="代码">代码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">// #include &lt;cstdlib&gt;</span></span><br><span class="line"><span class="comment">// #include &lt;windows.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">800</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(_Tp &amp;a, <span class="keyword">char</span> c = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(c = <span class="built_in">getchar</span>(); !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>());</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>; <span class="built_in">isdigit</span>(c); a = a * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>, c = <span class="built_in">getchar</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T, m, n;</span><br><span class="line"><span class="keyword">char</span> a[N][N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pos</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="built_in">pos</span>() &#123;&#125;</span><br><span class="line">    <span class="built_in">pos</span>(<span class="keyword">int</span> _x, <span class="keyword">int</span> _y): <span class="built_in">x</span>(_x), <span class="built_in">y</span>(_y) &#123;&#125;</span><br><span class="line">&#125;; <span class="comment">// 管学长说写struct更好~</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> d[<span class="number">4</span>][<span class="number">2</span>] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span> &#125;;</span><br><span class="line">vector&lt;pos&gt; Z; <span class="comment">// Ghosts !</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">const</span> pos &amp;p, <span class="keyword">int</span> op, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = p.x;</span><br><span class="line">    <span class="keyword">int</span> y = p.y;</span><br><span class="line">    <span class="keyword">if</span>(op == <span class="number">0</span> &amp;&amp; a[x][y] == <span class="string">&#x27;M&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(op == <span class="number">1</span> &amp;&amp; a[x][y] == <span class="string">&#x27;G&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[x][y] == <span class="string">&#x27;X&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(x &lt; <span class="number">1</span> || x &gt; n || y &lt; <span class="number">1</span> || y &gt; m) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">        pos &amp;Zp = Z[i];</span><br><span class="line">        <span class="keyword">int</span> _x = Zp.x;</span><br><span class="line">        <span class="keyword">int</span> _y = Zp.y;</span><br><span class="line">        <span class="keyword">int</span> dis = <span class="built_in">abs</span>(x - _x) + <span class="built_in">abs</span>(y - _y);</span><br><span class="line">        <span class="keyword">if</span>(dis &lt;= <span class="number">2</span> * t) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check_ghost</span><span class="params">(<span class="keyword">const</span> pos &amp;p, <span class="keyword">int</span> op, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = p.x;</span><br><span class="line">    <span class="keyword">int</span> y = p.y;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">        pos &amp;Zp = Z[i];</span><br><span class="line">        <span class="keyword">int</span> _x = Zp.x;</span><br><span class="line">        <span class="keyword">int</span> _y = Zp.y;</span><br><span class="line">        <span class="keyword">int</span> dis = <span class="built_in">abs</span>(x - _x) + <span class="built_in">abs</span>(y - _y);</span><br><span class="line">        <span class="keyword">if</span>(dis &lt;= <span class="number">2</span> * t) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_map</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// system(&quot;cls&quot;);</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, a[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Sleep(100);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(queue&lt;pos&gt; &amp;q, <span class="keyword">int</span> op, <span class="keyword">int</span> s, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">    queue&lt;pos&gt; tmp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= s; i++) &#123;</span><br><span class="line">        <span class="comment">// printf(&quot;step = %d\n&quot;, i);</span></span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            pos p = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span>(!<span class="built_in">check_ghost</span>(p, op, t)) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">                pos np;</span><br><span class="line">                np.x = p.x + d[j][<span class="number">0</span>];</span><br><span class="line">                np.y = p.y + d[j][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">check</span>(np, op, t)) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(op == <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(a[np.x][np.y] == <span class="string">&#x27;G&#x27;</span>) &#123;</span><br><span class="line">                            <span class="comment">// printf(&quot;FOUND G at (%d, %d)\n&quot;, np.x, np.y);</span></span><br><span class="line">                            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">else</span> a[np.x][np.y] = <span class="string">&#x27;M&#x27;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(op == <span class="number">1</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(a[np.x][np.y] == <span class="string">&#x27;M&#x27;</span>) &#123;</span><br><span class="line">                            <span class="comment">// printf(&quot;FOUND M at (%d, %d)\n&quot;, np.x, np.y);</span></span><br><span class="line">                            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">else</span> a[np.x][np.y] = <span class="string">&#x27;G&#x27;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    tmp.<span class="built_in">push</span>(np);</span><br><span class="line">                    <span class="comment">// printf(&quot;\tGOT (%d, %d)\n&quot;, np.x, np.y);</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        q = tmp;</span><br><span class="line">        <span class="keyword">while</span>(!tmp.<span class="built_in">empty</span>()) tmp.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Z.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> str[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;t5.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="built_in">read</span>(T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="built_in">init</span>();</span><br><span class="line">        queue&lt;pos&gt; M, G;</span><br><span class="line">        <span class="built_in">read</span>(n), <span class="built_in">read</span>(m);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, str + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">                <span class="keyword">char</span> c = str[j];</span><br><span class="line">                a[i][j] = c;</span><br><span class="line">                <span class="keyword">if</span>(c == <span class="string">&#x27;M&#x27;</span>) M.<span class="built_in">push</span>(<span class="built_in">pos</span>(i, j));</span><br><span class="line">                <span class="keyword">if</span>(c == <span class="string">&#x27;G&#x27;</span>) G.<span class="built_in">push</span>(<span class="built_in">pos</span>(i, j));</span><br><span class="line">                <span class="keyword">if</span>(c == <span class="string">&#x27;Z&#x27;</span>) Z.<span class="built_in">push_back</span>(<span class="built_in">pos</span>(i, j));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">bool</span> f = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!(M.<span class="built_in">empty</span>() &amp;&amp; G.<span class="built_in">empty</span>())) &#123;</span><br><span class="line">            t++;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">bfs</span>(M, <span class="number">0</span>, <span class="number">3</span>, t)) &#123; </span><br><span class="line">                <span class="comment">// printf(&quot;M found G!\n&quot;);</span></span><br><span class="line">                f = <span class="number">1</span>; </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">bfs</span>(G, <span class="number">1</span>, <span class="number">1</span>, t)) &#123;</span><br><span class="line">                <span class="comment">// printf(&quot;G found M!\n&quot;);</span></span><br><span class="line">                f = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// printf(&quot;t = %d [%d][%d]\n&quot;, t, M.size(), G.size());</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// print_map();</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, f ? t : <span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/pics/kv.png">
+      <meta itemprop="name" content="Kvar_ispw17">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kvar_ispw17's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/08/NWPU-ACM-05/" class="post-title-link" itemprop="url">Codeforces 176B Word Cut 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-06-08 18:59:36 / Modified: 19:10:38" itemprop="dateCreated datePublished" datetime="2021-06-08T18:59:36+08:00">2021-06-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目链接： <a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/176/B">Codeforces 176B Word Cut</a></p>
+<hr />
+<h2 id="题目大意">题目大意</h2>
+<p>给两个字符串 <span class="math inline">\(s\)</span>，<span class="math inline">\(e\)</span> <span class="math inline">\((\text{len} \leq 1000)\)</span>，和数字 <span class="math inline">\(k\)</span> <span class="math inline">\((k\leq 10^5)\)</span>， 定义一次操作为：从当前字符串中任取一个间隔拆开字符串并交换左右部分得到新字符串，问从 <span class="math inline">\(s\to e\)</span> 且恰好操作了 <span class="math inline">\(k\)</span> 次的不同方案数。</p>
+<h2 id="题解">题解</h2>
+<ol type="1">
+<li><p>我们把字符串复制一份放到后面接上，设为 <span class="math inline">\(t=s+s\)</span> ，则每一次操作实际上是取字符串 <span class="math inline">\(t\)</span> 的一个长为 <span class="math inline">\(n\)</span> 的子串得到新串，所以我们可以直接得到在所有的 <span class="math inline">\(n\)</span> 个循环串（设为集合 <span class="math inline">\(T\)</span>）中哪些是最终状态 <span class="math inline">\(e\)</span>，并记录满足条件的位置（记为 <span class="math inline">\(O\)</span>）个数为 <span class="math inline">\(\text{ok}\)</span>，则不能达到的状态位置个数 <span class="math inline">\(\text{nok}=n-\text{ok}\)</span>.</p></li>
+<li><p>注意到每考虑一次该操作，即代表一个从 <span class="math inline">\(T\to T\)</span> 的映射，我们发现当前操作中达到某一个 <span class="math inline">\(e\)</span> 位置的方案可以由上一次操作转移，由于转移中可能用到中间过渡的非终点串，于是设 <span class="math inline">\(\text{dp}[0][i]\)</span> 表示进行了 <span class="math inline">\(i\)</span> 次操作后达到 <span class="math inline">\(O\)</span> 的方案数，<span class="math inline">\(\text{dp}[1][i]\)</span> 为 进行了 <span class="math inline">\(i\)</span> 次操作后达到 <span class="math inline">\(T-O\)</span> 的方案数，</p>
+<p>则有：<span class="math display">\[\text{dp}[0][i] = \text{dp}[0][i-1]\times(\text{ok}-1)+\text{dp}[1][i-1]\times(\text{ok}) \\\text{dp}[1][i]=\text{dp}[0][i-1]\times (\text{nok}) +\text{dp}[1][i-1]\times (\text{nok} - 1)\]</span></p>
+<p>该转移表示，当前的到达终点串的方案一方面来自上次状态的到达终点的方案转移到新的终点串，由于每次转移不能转移到自己，故为 <span class="math inline">\(\text{ok}-1\)</span>，而另一部分为上一个状态中不能到达终点串的方案再利用所有终点串转移到当前状态，故直接为 <span class="math inline">\(\text{ok}\)</span>。当前状态的非终点串方案同理。</p></li>
+</ol>
+<h2 id="代码">代码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(_Tp &amp;a, <span class="keyword">char</span> c = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (c = <span class="built_in">getchar</span>(); !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>());</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>; <span class="built_in">isdigit</span>(c); a = a * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>, c = <span class="built_in">getchar</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e3</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> K = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line">string s, e;</span><br><span class="line">ll ok, nok, dp[<span class="number">2</span>][K];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;t5.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    cin &gt;&gt; s &gt;&gt; e &gt;&gt; k;</span><br><span class="line">    n = s.<span class="built_in">length</span>();</span><br><span class="line">    string t = s + s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        string <span class="keyword">_t</span> = t.<span class="built_in">substr</span>(i, n);</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">_t</span> == e) ok++;</span><br><span class="line">        <span class="keyword">else</span> nok++; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; ok &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">if</span>(s == e) dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> dp[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++) &#123;</span><br><span class="line">        dp[<span class="number">0</span>][i] = (dp[<span class="number">1</span>][i - <span class="number">1</span>] * ok % MOD + dp[<span class="number">0</span>][i - <span class="number">1</span>] * (ok - <span class="number">1</span>) % MOD) % MOD;</span><br><span class="line">        dp[<span class="number">1</span>][i] = (dp[<span class="number">1</span>][i - <span class="number">1</span>] * (nok - <span class="number">1</span>) % MOD + dp[<span class="number">0</span>][i - <span class="number">1</span>] * nok % MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp[<span class="number">0</span>][k] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -271,10 +433,16 @@ c_i&amp;=\sum_{j=0}^ia_j\cdot b_{i-j}\cdot \binom{i}{j}\\
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-05-15 09:22:07 / Modified: 10:34:29" itemprop="dateCreated datePublished" datetime="2021-05-15T09:22:07+08:00">2021-05-15</time>
+              <time title="Created: 2021-05-15 09:22:07" itemprop="dateCreated datePublished" datetime="2021-05-15T09:22:07+08:00">2021-05-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-08 19:10:26" itemprop="dateModified" datetime="2021-06-08T19:10:26+08:00">2021-06-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -532,7 +700,7 @@ c_i&amp;=\sum_{j=0}^ia_j\cdot b_{i-j}\cdot \binom{i}{j}\\
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-15 10:36:20" itemprop="dateModified" datetime="2021-05-15T10:36:20+08:00">2021-05-15</time>
+                <time title="Modified: 2021-06-08 18:59:09" itemprop="dateModified" datetime="2021-06-08T18:59:09+08:00">2021-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -680,7 +848,7 @@ c_i&amp;=\sum_{j=0}^ia_j\cdot b_{i-j}\cdot \binom{i}{j}\\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -693,7 +861,7 @@ c_i&amp;=\sum_{j=0}^ia_j\cdot b_{i-j}\cdot \binom{i}{j}\\
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

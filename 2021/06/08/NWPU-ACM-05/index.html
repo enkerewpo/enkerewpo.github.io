@@ -20,21 +20,20 @@
     var CONFIG = {"hostname":"enkerewpo.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="题目链接：Codeforces 1451E1 Bitwise Queries (Easy Version)  第五题 Bitwise Queries (Easy Version) 题解 第 7 组 - 2020 年 4 月 28 日 题目大意 题目有一个长度为 \(n\,(n\leq 2 ^ {16})\) 的隐藏数组，每次可以向题目询问任意两个位置 \(i\) 和 \(j\) （但 \">
+  <meta name="description" content="题目链接： Codeforces 176B Word Cut  题目大意 给两个字符串 \(s\)，\(e\) \((\text{len} \leq 1000)\)，和数字 \(k\) \((k\leq 10^5)\)， 定义一次操作为：从当前字符串中任取一个间隔拆开字符串并交换左右部分得到新字符串，问从 \(s\to e\) 且恰好操作了 \(k\) 次的不同方案数。 题解  我们把">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces 1451E1 Bitwise Queries (Easy Version) 题解">
-<meta property="og:url" content="https://enkerewpo.top/2021/05/15/NWPU-ACM-03/index.html">
+<meta property="og:title" content="Codeforces 176B Word Cut 题解">
+<meta property="og:url" content="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/index.html">
 <meta property="og:site_name" content="Kvar_ispw17&#39;s blog">
-<meta property="og:description" content="题目链接：Codeforces 1451E1 Bitwise Queries (Easy Version)  第五题 Bitwise Queries (Easy Version) 题解 第 7 组 - 2020 年 4 月 28 日 题目大意 题目有一个长度为 \(n\,(n\leq 2 ^ {16})\) 的隐藏数组，每次可以向题目询问任意两个位置 \(i\) 和 \(j\) （但 \">
+<meta property="og:description" content="题目链接： Codeforces 176B Word Cut  题目大意 给两个字符串 \(s\)，\(e\) \((\text{len} \leq 1000)\)，和数字 \(k\) \((k\leq 10^5)\)， 定义一次操作为：从当前字符串中任取一个间隔拆开字符串并交换左右部分得到新字符串，问从 \(s\to e\) 且恰好操作了 \(k\) 次的不同方案数。 题解  我们把">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-15T01:20:25.000Z">
-<meta property="article:modified_time" content="2021-05-15T02:36:05.713Z">
+<meta property="article:published_time" content="2021-06-08T10:59:36.000Z">
+<meta property="article:modified_time" content="2021-06-08T11:10:38.954Z">
 <meta property="article:author" content="Kvar_ispw17">
-<meta property="article:tag" content="位运算">
-<meta property="article:tag" content="交互题">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://enkerewpo.top/2021/05/15/NWPU-ACM-03/">
+<link rel="canonical" href="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/">
 
 
 <script id="page-configurations">
@@ -47,7 +46,7 @@
   };
 </script>
 
-  <title>Codeforces 1451E1 Bitwise Queries (Easy Version) 题解 | Kvar_ispw17's blog</title>
+  <title>Codeforces 176B Word Cut 题解 | Kvar_ispw17's blog</title>
   
 
 
@@ -167,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/05/15/NWPU-ACM-03/">
+    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/pics/kv.png">
@@ -180,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Codeforces 1451E1 Bitwise Queries (Easy Version) 题解
+          Codeforces 176B Word Cut 题解
         </h1>
 
         <div class="post-meta">
@@ -191,7 +190,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-05-15 09:20:25 / Modified: 10:36:05" itemprop="dateCreated datePublished" datetime="2021-05-15T09:20:25+08:00">2021-05-15</time>
+              <time title="Created: 2021-06-08 18:59:36 / Modified: 19:10:38" itemprop="dateCreated datePublished" datetime="2021-06-08T18:59:36+08:00">2021-06-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,24 +213,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>题目链接：<a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1451/E1">Codeforces 1451E1 Bitwise Queries (Easy Version)</a></p>
+        <p>题目链接： <a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/176/B">Codeforces 176B Word Cut</a></p>
 <hr />
-<h1 id="第五题-bitwise-queries-easy-version-题解">第五题 Bitwise Queries (Easy Version) 题解</h1>
-<p>第 7 组 - 2020 年 4 月 28 日</p>
 <h2 id="题目大意">题目大意</h2>
-<p>题目有一个长度为 <span class="math inline">\(n\,(n\leq 2 ^ {16})\)</span> 的隐藏数组，每次可以向题目询问任意两个位置 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(j\)</span> （但 <span class="math inline">\(i\neq j\)</span> ）的两个数的<strong>位与</strong>、<strong>位或</strong>和<strong>异或</strong>，最多问 <span class="math inline">\(n+2\)</span> 次。</p>
+<p>给两个字符串 <span class="math inline">\(s\)</span>，<span class="math inline">\(e\)</span> <span class="math inline">\((\text{len} \leq 1000)\)</span>，和数字 <span class="math inline">\(k\)</span> <span class="math inline">\((k\leq 10^5)\)</span>， 定义一次操作为：从当前字符串中任取一个间隔拆开字符串并交换左右部分得到新字符串，问从 <span class="math inline">\(s\to e\)</span> 且恰好操作了 <span class="math inline">\(k\)</span> 次的不同方案数。</p>
 <h2 id="题解">题解</h2>
-<p>自然的思路一定是尽可能确定下一个数 <span class="math inline">\(a\)</span> ，假设已经确定了 <span class="math inline">\(a\)</span> ，则其他的数都可以通过一次<strong>异或询问</strong>得到：<span class="math inline">\(a \text{ ^ } (a \text{ ^ } b) = b\)</span> .</p>
-<p>在此有补充的公式：<span class="math display">\[a+b=a \text{ ^ } b + 2\times(a \text{ &amp; } b)\]</span></p>
-<p>于是我们实际上可以得到其中任意三个数的值：</p>
 <ol type="1">
-<li>询问 <span class="math inline">\(a \text{ &amp; } b\)</span>，<span class="math inline">\(b \text{ &amp; } c\)</span>，<span class="math inline">\(a \text{ &amp; } c\)</span></li>
-<li>询问 <span class="math inline">\(a \text{ ^ } b\)</span>，<span class="math inline">\(b \text{ ^ } c\)</span>，然后本地计算得到 <span class="math inline">\(a \text{ ^ } c\)</span></li>
-<li>利用上面的公式得到 <span class="math inline">\(a+b\)</span>，<span class="math inline">\(b+c\)</span>，<span class="math inline">\(a+c\)</span>，之后得到 <span class="math inline">\(a+b+c\)</span>，自然可以得到每个数的值</li>
+<li><p>我们把字符串复制一份放到后面接上，设为 <span class="math inline">\(t=s+s\)</span> ，则每一次操作实际上是取字符串 <span class="math inline">\(t\)</span> 的一个长为 <span class="math inline">\(n\)</span> 的子串得到新串，所以我们可以直接得到在所有的 <span class="math inline">\(n\)</span> 个循环串（设为集合 <span class="math inline">\(T\)</span>）中哪些是最终状态 <span class="math inline">\(e\)</span>，并记录满足条件的位置（记为 <span class="math inline">\(O\)</span>）个数为 <span class="math inline">\(\text{ok}\)</span>，则不能达到的状态位置个数 <span class="math inline">\(\text{nok}=n-\text{ok}\)</span>.</p></li>
+<li><p>注意到每考虑一次该操作，即代表一个从 <span class="math inline">\(T\to T\)</span> 的映射，我们发现当前操作中达到某一个 <span class="math inline">\(e\)</span> 位置的方案可以由上一次操作转移，由于转移中可能用到中间过渡的非终点串，于是设 <span class="math inline">\(\text{dp}[0][i]\)</span> 表示进行了 <span class="math inline">\(i\)</span> 次操作后达到 <span class="math inline">\(O\)</span> 的方案数，<span class="math inline">\(\text{dp}[1][i]\)</span> 为 进行了 <span class="math inline">\(i\)</span> 次操作后达到 <span class="math inline">\(T-O\)</span> 的方案数，</p>
+<p>则有：<span class="math display">\[\text{dp}[0][i] = \text{dp}[0][i-1]\times(\text{ok}-1)+\text{dp}[1][i-1]\times(\text{ok}) \\\text{dp}[1][i]=\text{dp}[0][i-1]\times (\text{nok}) +\text{dp}[1][i-1]\times (\text{nok} - 1)\]</span></p>
+<p>该转移表示，当前的到达终点串的方案一方面来自上次状态的到达终点的方案转移到新的终点串，由于每次转移不能转移到自己，故为 <span class="math inline">\(\text{ok}-1\)</span>，而另一部分为上一个状态中不能到达终点串的方案再利用所有终点串转移到当前状态，故直接为 <span class="math inline">\(\text{ok}\)</span>。当前状态的非终点串方案同理。</p></li>
 </ol>
-<p>得到这三个数的值后，便可由异或询问得到所有值了，一共询问了<span class="math inline">\(n+2\)</span>次。</p>
 <h2 id="代码">代码</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = (<span class="number">1</span> &lt;&lt; <span class="number">16</span>) + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, _xor[N], A[N];</span><br><span class="line"><span class="keyword">int</span> a, b, c;</span><br><span class="line"><span class="keyword">int</span> ab, bc, ac;</span><br><span class="line"><span class="keyword">int</span> xab, xbc, xac;</span><br><span class="line"><span class="keyword">int</span> _ab, _bc, _ac;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;AND 1 2\n&quot;</span>), <span class="built_in">fflush</span>(stdout), <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;_ab);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;AND 2 3\n&quot;</span>), <span class="built_in">fflush</span>(stdout), <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;_bc);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;AND 1 3\n&quot;</span>), <span class="built_in">fflush</span>(stdout), <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;_ac);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;XOR 1 2\n&quot;</span>), <span class="built_in">fflush</span>(stdout), <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;xab);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;XOR 2 3\n&quot;</span>), <span class="built_in">fflush</span>(stdout), <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;xbc);</span><br><span class="line">	xac = xab ^ xbc;</span><br><span class="line">	ab = xab + (_ab &lt;&lt; <span class="number">1</span>);</span><br><span class="line">	bc = xbc + (_bc &lt;&lt; <span class="number">1</span>);</span><br><span class="line">	ac = xac + (_ac &lt;&lt; <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> s = (ab + bc + ac) / <span class="number">2</span>;</span><br><span class="line">	a = s - bc,  b = s - ac, c = s - ab;</span><br><span class="line">	A[<span class="number">1</span>] = a, A[<span class="number">2</span>] = b, A[<span class="number">3</span>] = c;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">4</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;XOR 1 %d\n&quot;</span>, i), <span class="built_in">fflush</span>(stdout), <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;_xor[i]);</span><br><span class="line">		A[i] = _xor[i] ^ a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;! &quot;</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, A[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>), <span class="built_in">fflush</span>(stdout);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(_Tp &amp;a, <span class="keyword">char</span> c = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (c = <span class="built_in">getchar</span>(); !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>());</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>; <span class="built_in">isdigit</span>(c); a = a * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>, c = <span class="built_in">getchar</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e3</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> K = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line">string s, e;</span><br><span class="line">ll ok, nok, dp[<span class="number">2</span>][K];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;t5.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    cin &gt;&gt; s &gt;&gt; e &gt;&gt; k;</span><br><span class="line">    n = s.<span class="built_in">length</span>();</span><br><span class="line">    string t = s + s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        string <span class="keyword">_t</span> = t.<span class="built_in">substr</span>(i, n);</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">_t</span> == e) ok++;</span><br><span class="line">        <span class="keyword">else</span> nok++; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; ok &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">if</span>(s == e) dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> dp[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++) &#123;</span><br><span class="line">        dp[<span class="number">0</span>][i] = (dp[<span class="number">1</span>][i - <span class="number">1</span>] * ok % MOD + dp[<span class="number">0</span>][i - <span class="number">1</span>] * (ok - <span class="number">1</span>) % MOD) % MOD;</span><br><span class="line">        dp[<span class="number">1</span>][i] = (dp[<span class="number">1</span>][i - <span class="number">1</span>] * (nok - <span class="number">1</span>) % MOD + dp[<span class="number">0</span>][i - <span class="number">1</span>] * nok % MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp[<span class="number">0</span>][k] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -247,7 +241,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://enkerewpo.top/2021/05/15/NWPU-ACM-03/" title="Codeforces 1451E1 Bitwise Queries (Easy Version) 题解">https://enkerewpo.top/2021/05/15/NWPU-ACM-03/</a>
+    <a href="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/" title="Codeforces 176B Word Cut 题解">https://enkerewpo.top/2021/06/08/NWPU-ACM-05/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -258,8 +252,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag"># 位运算</a>
-              <a href="/tags/%E4%BA%A4%E4%BA%92%E9%A2%98/" rel="tag"># 交互题</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
           </div>
 
         
@@ -268,12 +261,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/04/NWPU-ACM-02/" rel="prev" title="CodeForces 670C Cinema 题解">
-      <i class="fa fa-chevron-left"></i> CodeForces 670C Cinema 题解
+    <a href="/2021/05/15/LOJ-6343/" rel="prev" title="LibreOJ 6343. Sally Face 与地牢 题解">
+      <i class="fa fa-chevron-left"></i> LibreOJ 6343. Sally Face 与地牢 题解
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/05/15/NWPU-ACM-04/" rel="next" title="Luogu P4155 [SCOI2015]国旗计划 题解">
-      Luogu P4155 [SCOI2015]国旗计划 题解 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/06/08/NWPU-ACM-06/" rel="next" title="HDU 3085 Nightmare Ⅱ 题解">
+      HDU 3085 Nightmare Ⅱ 题解 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -333,7 +326,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%A2%98-bitwise-queries-easy-version-%E9%A2%98%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">第五题 Bitwise Queries (Easy Version) 题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="nav-number">1.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
