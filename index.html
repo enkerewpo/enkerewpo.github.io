@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">7</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">10</span></a>
 
   </li>
   </ul>
@@ -156,6 +156,237 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/07/07/NWPU-ACM-09/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/pics/kv.png">
+      <meta itemprop="name" content="Kvar_ispw17">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kvar_ispw17's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/07/NWPU-ACM-09/" class="post-title-link" itemprop="url">HDU 3449 Flight 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-07 09:03:49 / Modified: 09:08:17" itemprop="dateCreated datePublished" datetime="2021-07-07T09:03:49+08:00">2021-07-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目链接： <a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=3449">HDU 3449 Flight</a></p>
+<hr />
+<h2 id="题目大意">题目大意</h2>
+<p>给一个有向图带边权，求从给定的起点到终点的最短路，其中可以任选一条边把权值除二下取整，并仅能减一次。</p>
+<h2 id="题解">题解</h2>
+<p>注意到，该问题仅与普通的最短路问题差一条边，我们首先把减半的边加到原图上，此时发现，不能满足仅使用一次，我们希望路径走了某一条减半边后不允许再走其他的减半边，剩下的到终点的路径则为普通路径，于是可以把原图复制一份，放在“另一层”，把所有的减半边连到层之间即可。</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> * <span class="number">2</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">5e5</span> * <span class="number">5</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(_Tp &amp;a, <span class="keyword">char</span> c = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(c = <span class="built_in">getchar</span>(); !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>());</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>; <span class="built_in">isdigit</span>(c); a = a * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>, c = <span class="built_in">getchar</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> hd[N], nxt[M], to[M], c[M], tot;</span><br><span class="line">map&lt;string, <span class="keyword">int</span>&gt; id;</span><br><span class="line"><span class="keyword">int</span> itot;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> __c)</span> </span>&#123;</span><br><span class="line">    nxt[++tot] = hd[u], to[hd[u] = tot] = v, c[tot] = __c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll dis[N];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">dijkstra</span><span class="params">(<span class="keyword">int</span> S, <span class="keyword">int</span> E)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; S &lt;&lt; &quot; &quot; &lt;&lt; E &lt;&lt; endl;</span></span><br><span class="line">    dis[S] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">using</span> Pair = pair&lt;ll, <span class="keyword">int</span>&gt;;</span><br><span class="line">    priority_queue&lt;Pair, vector&lt;Pair&gt;, greater&lt;Pair&gt; &gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(<span class="built_in">Pair</span>(<span class="number">0</span>, S));</span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="keyword">int</span> u = q.<span class="built_in">top</span>().second;</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> e = hd[u]; e; e = nxt[e]) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = to[e];</span><br><span class="line">            <span class="keyword">int</span> w = c[e];</span><br><span class="line">            <span class="keyword">if</span>(dis[u] + w &lt; dis[v]) &#123;</span><br><span class="line">                dis[v] = dis[u] + w;</span><br><span class="line">                q.<span class="built_in">push</span>(<span class="built_in">Pair</span>(dis[v], v));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dis[E] == __LONG_LONG_MAX__) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> dis[E];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) dis[i] = __LONG_LONG_MAX__;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mem(x) memset(x, 0, sizeof(x))</span></span><br><span class="line">    <span class="built_in">mem</span>(hd), <span class="built_in">mem</span>(nxt), <span class="built_in">mem</span>(to), <span class="built_in">mem</span>(c);</span><br><span class="line">    tot = itot = <span class="number">0</span>;</span><br><span class="line">    id.<span class="built_in">clear</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;t3.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m) != EOF) &#123;</span><br><span class="line">        <span class="comment">// cout &lt;&lt; n &lt;&lt; &quot; &quot; &lt;&lt; m &lt;&lt; endl;</span></span><br><span class="line">        <span class="built_in">init</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            string a, b;</span><br><span class="line">            <span class="keyword">int</span> __c;</span><br><span class="line">            cin &gt;&gt;  a &gt;&gt; b &gt;&gt; __c;</span><br><span class="line">            <span class="keyword">int</span> id1 = !id[a] ? id[a] = ++itot : id[a];</span><br><span class="line">            <span class="keyword">int</span> id2 = !id[b] ? id[b] = ++itot : id[b];</span><br><span class="line">            <span class="built_in">add</span>(id1, id2, __c);</span><br><span class="line">            <span class="built_in">add</span>(id1 + n, id2 + n, __c); <span class="comment">// plus $n as the top layer</span></span><br><span class="line">            <span class="built_in">add</span>(id1, id2 + n, __c / <span class="number">2</span>); <span class="comment">// floor the __c / 2</span></span><br><span class="line">        &#125;</span><br><span class="line">        string s, e;</span><br><span class="line">        cin &gt;&gt; s &gt;&gt; e;</span><br><span class="line">        <span class="keyword">int</span> __S = id[s];</span><br><span class="line">        <span class="keyword">int</span> __E = id[e] + n;</span><br><span class="line">        <span class="keyword">if</span>(__S == <span class="number">0</span> || __E - n == <span class="number">0</span>) <span class="built_in">puts</span>(<span class="string">&quot;-1&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; <span class="built_in">dijkstra</span>(__S, __E) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/07/07/NWPU-ACM-08/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/pics/kv.png">
+      <meta itemprop="name" content="Kvar_ispw17">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kvar_ispw17's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/07/NWPU-ACM-08/" class="post-title-link" itemprop="url">Luogu 1352 没有上司的舞会 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-07 09:03:48 / Modified: 09:09:10" itemprop="dateCreated datePublished" datetime="2021-07-07T09:03:48+08:00">2021-07-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目链接： <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1352">Luogu 1352 没有上司的舞会</a></p>
+<hr />
+<h2 id="题目大意">题目大意</h2>
+<p>有一个舞会，里面的人有上司的关系，每个人有一个快乐值 <span class="math inline">\(w[i]\)</span>，如果一个人的直接上司也来了，则这个人就再也不愿意来跳舞了。（快乐值有正有负）</p>
+<h2 id="题解">题解</h2>
+<p>题目给了一个树形关系，我们设 <span class="math inline">\(\text{dp}[i][j]\)</span> 表示第 <span class="math inline">\(i\)</span> 的人去或不去（<span class="math inline">\(j=0\)</span> 不去，<span class="math inline">\(j=1\)</span> 去）时，以其为根的子树所能达到的最大快乐值的和。注意到最终答案便是 <span class="math inline">\(\text{max}\{\text{dp}[root][0],\text{dp}[root][1]\}\)</span>.</p>
+<p>如何进行 $  $ 转移？我们根据题目给的关系：</p>
+<ol type="1">
+<li>若 <span class="math inline">\(i\)</span> 来则：<span class="math inline">\(\text{dp}[i][1]=w[i]+\displaystyle\sum_{c=\text{ch}[i]}\text{dp}[c][0]\)</span></li>
+<li>若 <span class="math inline">\(i\)</span> 不来则：<span class="math inline">\(\text{dp}[i][0]=\displaystyle\sum_{c=\text{ch}[i]}\text{max}\{\text{dp}[c][0],\text{dp}[c][1]\}\)</span></li>
+</ol>
+<h2 id="代码">代码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">6e3</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(_Tp &amp;a, <span class="keyword">char</span> c = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(c = <span class="built_in">getchar</span>(); !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>());</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>; <span class="built_in">isdigit</span>(c); a = a * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>, c = <span class="built_in">getchar</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll n, root, a[N], fa[N], dp[N][<span class="number">2</span>];</span><br><span class="line">vector&lt;ll&gt; ch[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//printf(&quot;at %d\n&quot;, p);</span></span><br><span class="line">    <span class="keyword">if</span>(ch[p].<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        dp[p][<span class="number">1</span>] = a[p];</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;ll&gt;::iterator it = ch[p].<span class="built_in">begin</span>();</span><br><span class="line">    ll cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(; it != ch[p].<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">        <span class="keyword">int</span> c = *it;</span><br><span class="line">        <span class="built_in">dfs</span>(c);</span><br><span class="line">        dp[p][<span class="number">1</span>] += dp[c][<span class="number">0</span>];</span><br><span class="line">        cnt += <span class="built_in">max</span>(dp[c][<span class="number">0</span>], dp[c][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    dp[p][<span class="number">1</span>] += a[p];</span><br><span class="line">    dp[p][<span class="number">0</span>] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;t2.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="built_in">read</span>(n);</span><br><span class="line">    <span class="keyword">int</span> c, f;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">read</span>(c), <span class="built_in">read</span>(f);</span><br><span class="line">        ch[f].<span class="built_in">push_back</span>(c);</span><br><span class="line">        fa[c] = f;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!fa[i]) &#123;</span><br><span class="line">            root = i;</span><br><span class="line">            <span class="comment">//cout &lt;&lt; root &lt;&lt; endl;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(root);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">max</span>(dp[root][<span class="number">0</span>], dp[root][<span class="number">1</span>]) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/07/07/NWPU-ACM-07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/pics/kv.png">
+      <meta itemprop="name" content="Kvar_ispw17">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kvar_ispw17's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/07/NWPU-ACM-07/" class="post-title-link" itemprop="url">Luogu P1077 摆花 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-07 08:59:51 / Modified: 09:09:27" itemprop="dateCreated datePublished" datetime="2021-07-07T08:59:51+08:00">2021-07-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1077">Luogu P1077 摆花</a></p>
+<hr />
+<h2 id="题目大意">题目大意</h2>
+<p>一共 <span class="math inline">\(n\)</span> 个位置，每个位置可以放不超过 <span class="math inline">\(a[i]\)</span> 盆花，问一共放了 <span class="math inline">\(m\)</span> 盆的方案数。</p>
+<h2 id="题解">题解</h2>
+<p>设 <span class="math inline">\(\text{dp}[i][j]\)</span> 表示只考虑前 <span class="math inline">\(i\)</span> 个位置，且和为 <span class="math inline">\(j\)</span> 的方案数，则有：</p>
+<p><span class="math display">\[\text{dp}[i][j] = \sum_{k=0}^{\text{min}(j, a[i])}{\text{dp}[i-1][j-k]}\]</span></p>
+<h2 id="代码">代码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1000007</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(_Tp &amp;a, <span class="keyword">char</span> c = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (c = <span class="built_in">getchar</span>(); !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>());</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>; <span class="built_in">isdigit</span>(c); a = a * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>, c = <span class="built_in">getchar</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N], n, m;</span><br><span class="line">ll \text&#123;dp&#125;[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//freopen(&quot;t5.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="built_in">read</span>(n), <span class="built_in">read</span>(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="built_in">read</span>(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    \text&#123;dp&#125;[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= a[i]; k++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(j - k &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    \text&#123;dp&#125;[i][j] = (\text&#123;dp&#125;[i][j] + \text&#123;dp&#125;[i - <span class="number">1</span>][j - k]) % MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; \text&#123;dp&#125;[n][m] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -265,10 +496,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-06-08 18:59:36 / Modified: 19:10:38" itemprop="dateCreated datePublished" datetime="2021-06-08T18:59:36+08:00">2021-06-08</time>
+              <time title="Created: 2021-06-08 18:59:36" itemprop="dateCreated datePublished" datetime="2021-06-08T18:59:36+08:00">2021-06-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-07 08:59:31" itemprop="dateModified" datetime="2021-07-07T08:59:31+08:00">2021-07-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -298,7 +535,12 @@
 <ol type="1">
 <li><p>我们把字符串复制一份放到后面接上，设为 <span class="math inline">\(t=s+s\)</span> ，则每一次操作实际上是取字符串 <span class="math inline">\(t\)</span> 的一个长为 <span class="math inline">\(n\)</span> 的子串得到新串，所以我们可以直接得到在所有的 <span class="math inline">\(n\)</span> 个循环串（设为集合 <span class="math inline">\(T\)</span>）中哪些是最终状态 <span class="math inline">\(e\)</span>，并记录满足条件的位置（记为 <span class="math inline">\(O\)</span>）个数为 <span class="math inline">\(\text{ok}\)</span>，则不能达到的状态位置个数 <span class="math inline">\(\text{nok}=n-\text{ok}\)</span>.</p></li>
 <li><p>注意到每考虑一次该操作，即代表一个从 <span class="math inline">\(T\to T\)</span> 的映射，我们发现当前操作中达到某一个 <span class="math inline">\(e\)</span> 位置的方案可以由上一次操作转移，由于转移中可能用到中间过渡的非终点串，于是设 <span class="math inline">\(\text{dp}[0][i]\)</span> 表示进行了 <span class="math inline">\(i\)</span> 次操作后达到 <span class="math inline">\(O\)</span> 的方案数，<span class="math inline">\(\text{dp}[1][i]\)</span> 为 进行了 <span class="math inline">\(i\)</span> 次操作后达到 <span class="math inline">\(T-O\)</span> 的方案数，</p>
-<p>则有：<span class="math display">\[\text{dp}[0][i] = \text{dp}[0][i-1]\times(\text{ok}-1)+\text{dp}[1][i-1]\times(\text{ok}) \\\text{dp}[1][i]=\text{dp}[0][i-1]\times (\text{nok}) +\text{dp}[1][i-1]\times (\text{nok} - 1)\]</span></p>
+<p>则有： <span class="math display">\[
+\begin{aligned}
+\text{dp}[0][i] &amp;= \text{dp}[0][i-1]\times(\text{ok}-1)+\text{dp}[1][i-1]\times(\text{ok}) \\
+\text{dp}[1][i] &amp;=\text{dp}[0][i-1]\times (\text{nok}) +\text{dp}[1][i-1]\times (\text{nok} - 1)
+\end{aligned}
+\]</span></p>
 <p>该转移表示，当前的到达终点串的方案一方面来自上次状态的到达终点的方案转移到新的终点串，由于每次转移不能转移到自己，故为 <span class="math inline">\(\text{ok}-1\)</span>，而另一部分为上一个状态中不能到达终点串的方案再利用所有终点串转移到当前状态，故直接为 <span class="math inline">\(\text{ok}\)</span>。当前状态的非终点串方案同理。</p></li>
 </ol>
 <h2 id="代码">代码</h2>
@@ -848,7 +1090,7 @@ c_i&amp;=\sum_{j=0}^ia_j\cdot b_{i-j}\cdot \binom{i}{j}\\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -861,7 +1103,7 @@ c_i&amp;=\sum_{j=0}^ia_j\cdot b_{i-j}\cdot \binom{i}{j}\\
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

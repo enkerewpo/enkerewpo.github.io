@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"enkerewpo.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="题目链接： Codeforces 176B Word Cut  题目大意 给两个字符串 \(s\)，\(e\) \((\text{len} \leq 1000)\)，和数字 \(k\) \((k\leq 10^5)\)， 定义一次操作为：从当前字符串中任取一个间隔拆开字符串并交换左右部分得到新字符串，问从 \(s\to e\) 且恰好操作了 \(k\) 次的不同方案数。 题解  我们把">
+  <meta name="description" content="题目链接： Luogu 1352 没有上司的舞会  题目大意 有一个舞会，里面的人有上司的关系，每个人有一个快乐值 \(w[i]\)，如果一个人的直接上司也来了，则这个人就再也不愿意来跳舞了。（快乐值有正有负） 题解 题目给了一个树形关系，我们设 \(\text{dp}[i][j]\) 表示第 \(i\) 的人去或不去（\(j&#x3D;0\) 不去，\(j&#x3D;1\) 去）时，以其为根的子树所能达到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces 176B Word Cut 题解">
-<meta property="og:url" content="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/index.html">
+<meta property="og:title" content="Luogu 1352 没有上司的舞会 题解">
+<meta property="og:url" content="https://enkerewpo.top/2021/07/07/NWPU-ACM-08/index.html">
 <meta property="og:site_name" content="Kvar_ispw17&#39;s blog">
-<meta property="og:description" content="题目链接： Codeforces 176B Word Cut  题目大意 给两个字符串 \(s\)，\(e\) \((\text{len} \leq 1000)\)，和数字 \(k\) \((k\leq 10^5)\)， 定义一次操作为：从当前字符串中任取一个间隔拆开字符串并交换左右部分得到新字符串，问从 \(s\to e\) 且恰好操作了 \(k\) 次的不同方案数。 题解  我们把">
+<meta property="og:description" content="题目链接： Luogu 1352 没有上司的舞会  题目大意 有一个舞会，里面的人有上司的关系，每个人有一个快乐值 \(w[i]\)，如果一个人的直接上司也来了，则这个人就再也不愿意来跳舞了。（快乐值有正有负） 题解 题目给了一个树形关系，我们设 \(\text{dp}[i][j]\) 表示第 \(i\) 的人去或不去（\(j&#x3D;0\) 不去，\(j&#x3D;1\) 去）时，以其为根的子树所能达到">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-06-08T10:59:36.000Z">
-<meta property="article:modified_time" content="2021-07-07T00:59:31.943Z">
+<meta property="article:published_time" content="2021-07-07T01:03:48.000Z">
+<meta property="article:modified_time" content="2021-07-07T01:09:10.372Z">
 <meta property="article:author" content="Kvar_ispw17">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/">
+<link rel="canonical" href="https://enkerewpo.top/2021/07/07/NWPU-ACM-08/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Codeforces 176B Word Cut 题解 | Kvar_ispw17's blog</title>
+  <title>Luogu 1352 没有上司的舞会 题解 | Kvar_ispw17's blog</title>
   
 
 
@@ -166,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/">
+    <link itemprop="mainEntityOfPage" href="https://enkerewpo.top/2021/07/07/NWPU-ACM-08/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/pics/kv.png">
@@ -179,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Codeforces 176B Word Cut 题解
+          Luogu 1352 没有上司的舞会 题解
         </h1>
 
         <div class="post-meta">
@@ -188,16 +188,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-06-08 18:59:36" itemprop="dateCreated datePublished" datetime="2021-06-08T18:59:36+08:00">2021-06-08</time>
+              <time title="Created: 2021-07-07 09:03:48 / Modified: 09:09:10" itemprop="dateCreated datePublished" datetime="2021-07-07T09:03:48+08:00">2021-07-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-07 08:59:31" itemprop="dateModified" datetime="2021-07-07T08:59:31+08:00">2021-07-07</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -219,24 +213,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>题目链接： <a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/176/B">Codeforces 176B Word Cut</a></p>
+        <p>题目链接： <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1352">Luogu 1352 没有上司的舞会</a></p>
 <hr />
 <h2 id="题目大意">题目大意</h2>
-<p>给两个字符串 <span class="math inline">\(s\)</span>，<span class="math inline">\(e\)</span> <span class="math inline">\((\text{len} \leq 1000)\)</span>，和数字 <span class="math inline">\(k\)</span> <span class="math inline">\((k\leq 10^5)\)</span>， 定义一次操作为：从当前字符串中任取一个间隔拆开字符串并交换左右部分得到新字符串，问从 <span class="math inline">\(s\to e\)</span> 且恰好操作了 <span class="math inline">\(k\)</span> 次的不同方案数。</p>
+<p>有一个舞会，里面的人有上司的关系，每个人有一个快乐值 <span class="math inline">\(w[i]\)</span>，如果一个人的直接上司也来了，则这个人就再也不愿意来跳舞了。（快乐值有正有负）</p>
 <h2 id="题解">题解</h2>
+<p>题目给了一个树形关系，我们设 <span class="math inline">\(\text{dp}[i][j]\)</span> 表示第 <span class="math inline">\(i\)</span> 的人去或不去（<span class="math inline">\(j=0\)</span> 不去，<span class="math inline">\(j=1\)</span> 去）时，以其为根的子树所能达到的最大快乐值的和。注意到最终答案便是 <span class="math inline">\(\text{max}\{\text{dp}[root][0],\text{dp}[root][1]\}\)</span>.</p>
+<p>如何进行 $  $ 转移？我们根据题目给的关系：</p>
 <ol type="1">
-<li><p>我们把字符串复制一份放到后面接上，设为 <span class="math inline">\(t=s+s\)</span> ，则每一次操作实际上是取字符串 <span class="math inline">\(t\)</span> 的一个长为 <span class="math inline">\(n\)</span> 的子串得到新串，所以我们可以直接得到在所有的 <span class="math inline">\(n\)</span> 个循环串（设为集合 <span class="math inline">\(T\)</span>）中哪些是最终状态 <span class="math inline">\(e\)</span>，并记录满足条件的位置（记为 <span class="math inline">\(O\)</span>）个数为 <span class="math inline">\(\text{ok}\)</span>，则不能达到的状态位置个数 <span class="math inline">\(\text{nok}=n-\text{ok}\)</span>.</p></li>
-<li><p>注意到每考虑一次该操作，即代表一个从 <span class="math inline">\(T\to T\)</span> 的映射，我们发现当前操作中达到某一个 <span class="math inline">\(e\)</span> 位置的方案可以由上一次操作转移，由于转移中可能用到中间过渡的非终点串，于是设 <span class="math inline">\(\text{dp}[0][i]\)</span> 表示进行了 <span class="math inline">\(i\)</span> 次操作后达到 <span class="math inline">\(O\)</span> 的方案数，<span class="math inline">\(\text{dp}[1][i]\)</span> 为 进行了 <span class="math inline">\(i\)</span> 次操作后达到 <span class="math inline">\(T-O\)</span> 的方案数，</p>
-<p>则有： <span class="math display">\[
-\begin{aligned}
-\text{dp}[0][i] &amp;= \text{dp}[0][i-1]\times(\text{ok}-1)+\text{dp}[1][i-1]\times(\text{ok}) \\
-\text{dp}[1][i] &amp;=\text{dp}[0][i-1]\times (\text{nok}) +\text{dp}[1][i-1]\times (\text{nok} - 1)
-\end{aligned}
-\]</span></p>
-<p>该转移表示，当前的到达终点串的方案一方面来自上次状态的到达终点的方案转移到新的终点串，由于每次转移不能转移到自己，故为 <span class="math inline">\(\text{ok}-1\)</span>，而另一部分为上一个状态中不能到达终点串的方案再利用所有终点串转移到当前状态，故直接为 <span class="math inline">\(\text{ok}\)</span>。当前状态的非终点串方案同理。</p></li>
+<li>若 <span class="math inline">\(i\)</span> 来则：<span class="math inline">\(\text{dp}[i][1]=w[i]+\displaystyle\sum_{c=\text{ch}[i]}\text{dp}[c][0]\)</span></li>
+<li>若 <span class="math inline">\(i\)</span> 不来则：<span class="math inline">\(\text{dp}[i][0]=\displaystyle\sum_{c=\text{ch}[i]}\text{max}\{\text{dp}[c][0],\text{dp}[c][1]\}\)</span></li>
 </ol>
 <h2 id="代码">代码</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(_Tp &amp;a, <span class="keyword">char</span> c = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (c = <span class="built_in">getchar</span>(); !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>());</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>; <span class="built_in">isdigit</span>(c); a = a * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>, c = <span class="built_in">getchar</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e3</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> K = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line">string s, e;</span><br><span class="line">ll ok, nok, dp[<span class="number">2</span>][K];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;t5.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    cin &gt;&gt; s &gt;&gt; e &gt;&gt; k;</span><br><span class="line">    n = s.<span class="built_in">length</span>();</span><br><span class="line">    string t = s + s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        string <span class="keyword">_t</span> = t.<span class="built_in">substr</span>(i, n);</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">_t</span> == e) ok++;</span><br><span class="line">        <span class="keyword">else</span> nok++; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; ok &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">if</span>(s == e) dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> dp[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++) &#123;</span><br><span class="line">        dp[<span class="number">0</span>][i] = (dp[<span class="number">1</span>][i - <span class="number">1</span>] * ok % MOD + dp[<span class="number">0</span>][i - <span class="number">1</span>] * (ok - <span class="number">1</span>) % MOD) % MOD;</span><br><span class="line">        dp[<span class="number">1</span>][i] = (dp[<span class="number">1</span>][i - <span class="number">1</span>] * (nok - <span class="number">1</span>) % MOD + dp[<span class="number">0</span>][i - <span class="number">1</span>] * nok % MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp[<span class="number">0</span>][k] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">6e3</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(_Tp &amp;a, <span class="keyword">char</span> c = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(c = <span class="built_in">getchar</span>(); !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>());</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>; <span class="built_in">isdigit</span>(c); a = a * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>, c = <span class="built_in">getchar</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll n, root, a[N], fa[N], dp[N][<span class="number">2</span>];</span><br><span class="line">vector&lt;ll&gt; ch[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//printf(&quot;at %d\n&quot;, p);</span></span><br><span class="line">    <span class="keyword">if</span>(ch[p].<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        dp[p][<span class="number">1</span>] = a[p];</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;ll&gt;::iterator it = ch[p].<span class="built_in">begin</span>();</span><br><span class="line">    ll cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(; it != ch[p].<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">        <span class="keyword">int</span> c = *it;</span><br><span class="line">        <span class="built_in">dfs</span>(c);</span><br><span class="line">        dp[p][<span class="number">1</span>] += dp[c][<span class="number">0</span>];</span><br><span class="line">        cnt += <span class="built_in">max</span>(dp[c][<span class="number">0</span>], dp[c][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    dp[p][<span class="number">1</span>] += a[p];</span><br><span class="line">    dp[p][<span class="number">0</span>] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;t2.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="built_in">read</span>(n);</span><br><span class="line">    <span class="keyword">int</span> c, f;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">read</span>(c), <span class="built_in">read</span>(f);</span><br><span class="line">        ch[f].<span class="built_in">push_back</span>(c);</span><br><span class="line">        fa[c] = f;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!fa[i]) &#123;</span><br><span class="line">            root = i;</span><br><span class="line">            <span class="comment">//cout &lt;&lt; root &lt;&lt; endl;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(root);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">max</span>(dp[root][<span class="number">0</span>], dp[root][<span class="number">1</span>]) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -252,7 +241,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://enkerewpo.top/2021/06/08/NWPU-ACM-05/" title="Codeforces 176B Word Cut 题解">https://enkerewpo.top/2021/06/08/NWPU-ACM-05/</a>
+    <a href="https://enkerewpo.top/2021/07/07/NWPU-ACM-08/" title="Luogu 1352 没有上司的舞会 题解">https://enkerewpo.top/2021/07/07/NWPU-ACM-08/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -272,12 +261,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/15/LOJ-6343/" rel="prev" title="LibreOJ 6343. Sally Face 与地牢 题解">
-      <i class="fa fa-chevron-left"></i> LibreOJ 6343. Sally Face 与地牢 题解
+    <a href="/2021/07/07/NWPU-ACM-07/" rel="prev" title="Luogu P1077 摆花 题解">
+      <i class="fa fa-chevron-left"></i> Luogu P1077 摆花 题解
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/06/08/NWPU-ACM-06/" rel="next" title="HDU 3085 Nightmare Ⅱ 题解">
-      HDU 3085 Nightmare Ⅱ 题解 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/07/07/NWPU-ACM-09/" rel="next" title="HDU 3449 Flight 题解">
+      HDU 3449 Flight 题解 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
