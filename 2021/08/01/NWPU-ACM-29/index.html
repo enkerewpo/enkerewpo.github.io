@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"enkerewpo.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Codeforces gym 101611D. Decoding of Varints 题解 题解 阅读理解题，讲的是把一个大数转换成一种类似 \(2^7\) 进制的编码规则，直接看题目中给的样例可以很快理解： \[ 260 &#x3D;(b_0-128)\cdot 2^0+b_1\cdot 2^1 \\ &#x3D;(132-128)\cdot 2^0+2\cdot 2^1 \] 即除了最高的一位 \(">
+  <meta name="description" content="Codeforces gym 101611D. Decoding of Varints 题解 题解 阅读理解题，讲的是把一个大数转换成一种类似 \(2^7\) 进制的编码规则，直接看题目中给的样例可以很快理解： \[ \begin{aligned} 260 &#x3D;(b_0-128)\cdot 2^0+b_1\cdot 2^1 \\ &#x3D;(132-128)\cdot 2^0+2\cdot 2^1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces gym 101611D. Decoding of Varints 题解">
 <meta property="og:url" content="https://enkerewpo.top/2021/08/01/NWPU-ACM-29/index.html">
 <meta property="og:site_name" content="Kvar_ispw17&#39;s blog">
-<meta property="og:description" content="Codeforces gym 101611D. Decoding of Varints 题解 题解 阅读理解题，讲的是把一个大数转换成一种类似 \(2^7\) 进制的编码规则，直接看题目中给的样例可以很快理解： \[ 260 &#x3D;(b_0-128)\cdot 2^0+b_1\cdot 2^1 \\ &#x3D;(132-128)\cdot 2^0+2\cdot 2^1 \] 即除了最高的一位 \(">
+<meta property="og:description" content="Codeforces gym 101611D. Decoding of Varints 题解 题解 阅读理解题，讲的是把一个大数转换成一种类似 \(2^7\) 进制的编码规则，直接看题目中给的样例可以很快理解： \[ \begin{aligned} 260 &#x3D;(b_0-128)\cdot 2^0+b_1\cdot 2^1 \\ &#x3D;(132-128)\cdot 2^0+2\cdot 2^1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-01T11:37:33.000Z">
-<meta property="article:modified_time" content="2021-08-01T11:38:10.606Z">
+<meta property="article:modified_time" content="2021-08-01T11:46:31.877Z">
 <meta property="article:author" content="Kvar_ispw17">
 <meta property="article:tag" content="阅读理解">
 <meta name="twitter:card" content="summary">
@@ -194,7 +194,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-01 19:37:33 / Modified: 19:38:10" itemprop="dateCreated datePublished" datetime="2021-08-01T19:37:33+08:00">2021-08-01</time>
+              <time title="Created: 2021-08-01 19:37:33 / Modified: 19:46:31" itemprop="dateCreated datePublished" datetime="2021-08-01T19:37:33+08:00">2021-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,8 +220,10 @@
         <h1 id="codeforces-gym-101611d.-decoding-of-varints-题解">Codeforces gym 101611D. Decoding of Varints 题解</h1>
 <h2 id="题解">题解</h2>
 <p>阅读理解题，讲的是把一个大数转换成一种类似 <span class="math inline">\(2^7\)</span> 进制的编码规则，直接看题目中给的样例可以很快理解： <span class="math display">\[
+\begin{aligned}
 260 =(b_0-128)\cdot 2^0+b_1\cdot 2^1 \\
 =(132-128)\cdot 2^0+2\cdot 2^1
+\end{aligned}
 \]</span></p>
 <p>即除了最高的一位 <span class="math inline">\(b_i&lt; 128\)</span> ，其他位均为 <span class="math inline">\(\geq 128\)</span>，我们就按照这个规则对给出的 <span class="math inline">\(b_i\)</span> 进行组合即可。</p>
 <p>题目最后还有一个把无符号转换成有符号的规则 <code>zig-zag</code> ，分奇偶输出即可（注意 <code>ans+1</code> 可能会爆掉 <code>unsigned long long</code> ，直接转换为 <code>__int128</code> 防止溢出）。</p>

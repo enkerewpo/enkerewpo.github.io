@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"enkerewpo.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Codeforces gym 101611A. Walk of ThreeAdvertising Strategy 题解 题解 我们可以把递推式子简化为： \[ b_{i+1}&#x3D;b_i+\min{\{b_i,\frac{n-b_i}{2}\}+x_i}\\ \sum_{i&#x3D;1}^{n}x_i\leq k \] 我们想象这个过程，可以分为两步：先是一个类似二倍的增加，在接近 \(n\)">
+  <meta name="description" content="Codeforces gym 101611A. Walk of ThreeAdvertising Strategy 题解 题解 我们可以把递推式子简化为： \[ \begin{aligned} b_{i+1}&#x3D;b_i+\min{\{b_i,\frac{n-b_i}{2}\}+x_i}\\ \sum_{i&#x3D;1}^{n}x_i\leq k \end{aligned} \] 我们想象这个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces gym 101611A. Walk of ThreeAdvertising Strategy 题解">
 <meta property="og:url" content="https://enkerewpo.top/2021/08/01/NWPU-ACM-30/index.html">
 <meta property="og:site_name" content="Kvar_ispw17&#39;s blog">
-<meta property="og:description" content="Codeforces gym 101611A. Walk of ThreeAdvertising Strategy 题解 题解 我们可以把递推式子简化为： \[ b_{i+1}&#x3D;b_i+\min{\{b_i,\frac{n-b_i}{2}\}+x_i}\\ \sum_{i&#x3D;1}^{n}x_i\leq k \] 我们想象这个过程，可以分为两步：先是一个类似二倍的增加，在接近 \(n\)">
+<meta property="og:description" content="Codeforces gym 101611A. Walk of ThreeAdvertising Strategy 题解 题解 我们可以把递推式子简化为： \[ \begin{aligned} b_{i+1}&#x3D;b_i+\min{\{b_i,\frac{n-b_i}{2}\}+x_i}\\ \sum_{i&#x3D;1}^{n}x_i\leq k \end{aligned} \] 我们想象这个">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-01T11:38:30.000Z">
-<meta property="article:modified_time" content="2021-08-01T11:39:16.810Z">
+<meta property="article:modified_time" content="2021-08-01T11:46:42.579Z">
 <meta property="article:author" content="Kvar_ispw17">
 <meta property="article:tag" content="贪心">
 <meta property="article:tag" content="构造">
@@ -195,7 +195,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-01 19:38:30 / Modified: 19:39:16" itemprop="dateCreated datePublished" datetime="2021-08-01T19:38:30+08:00">2021-08-01</time>
+              <time title="Created: 2021-08-01 19:38:30 / Modified: 19:46:42" itemprop="dateCreated datePublished" datetime="2021-08-01T19:38:30+08:00">2021-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,8 +221,10 @@
         <h1 id="codeforces-gym-101611a.-walk-of-threeadvertising-strategy-题解">Codeforces gym 101611A. Walk of ThreeAdvertising Strategy 题解</h1>
 <h2 id="题解">题解</h2>
 <p>我们可以把递推式子简化为： <span class="math display">\[
+\begin{aligned}
 b_{i+1}=b_i+\min{\{b_i,\frac{n-b_i}{2}\}+x_i}\\
 \sum_{i=1}^{n}x_i\leq k
+\end{aligned}
 \]</span></p>
 <p>我们想象这个过程，可以分为两步：先是一个类似二倍的增加，在接近 <span class="math inline">\(n\)</span> 时变为由剩余部分进行限制，每次类似把剩下的一半填满。</p>
 <p>由于要求天数尽量少，则第一部分可以把 <span class="math inline">\(x_i\)</span> 尽可能往第一天放，可以保证对 <span class="math inline">\(\times 2\)</span> 的贡献最多，之后我们到第二部分，这里我们发现，如果在距离 <span class="math inline">\(n\)</span> 还比较远的时候放 <span class="math inline">\(x_i\)</span>，效益不如把剩下的 <span class="math inline">\(x_i\)</span> 放在最后，用来“兜底最后一天的观看人数”，“兜底”的越多，越容易尽快停止，而从 <span class="math inline">\(16\)</span> 减半下去和从 <span class="math inline">\(15\)</span> 减半下去影响的数量级对于 <span class="math inline">\(\log\)</span> 这样级别的下降效益比较低，上面的两个贪心结合枚举第一天和最后一天的分配人数就可以枚举得到最小的天数。</p>

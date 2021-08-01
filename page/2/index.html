@@ -189,7 +189,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-01 19:38:30 / Modified: 19:39:16" itemprop="dateCreated datePublished" datetime="2021-08-01T19:38:30+08:00">2021-08-01</time>
+              <time title="Created: 2021-08-01 19:38:30 / Modified: 19:46:42" itemprop="dateCreated datePublished" datetime="2021-08-01T19:38:30+08:00">2021-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,8 +215,10 @@
           <h1 id="codeforces-gym-101611a.-walk-of-threeadvertising-strategy-题解">Codeforces gym 101611A. Walk of ThreeAdvertising Strategy 题解</h1>
 <h2 id="题解">题解</h2>
 <p>我们可以把递推式子简化为： <span class="math display">\[
+\begin{aligned}
 b_{i+1}=b_i+\min{\{b_i,\frac{n-b_i}{2}\}+x_i}\\
 \sum_{i=1}^{n}x_i\leq k
+\end{aligned}
 \]</span></p>
 <p>我们想象这个过程，可以分为两步：先是一个类似二倍的增加，在接近 <span class="math inline">\(n\)</span> 时变为由剩余部分进行限制，每次类似把剩下的一半填满。</p>
 <p>由于要求天数尽量少，则第一部分可以把 <span class="math inline">\(x_i\)</span> 尽可能往第一天放，可以保证对 <span class="math inline">\(\times 2\)</span> 的贡献最多，之后我们到第二部分，这里我们发现，如果在距离 <span class="math inline">\(n\)</span> 还比较远的时候放 <span class="math inline">\(x_i\)</span>，效益不如把剩下的 <span class="math inline">\(x_i\)</span> 放在最后，用来“兜底最后一天的观看人数”，“兜底”的越多，越容易尽快停止，而从 <span class="math inline">\(16\)</span> 减半下去和从 <span class="math inline">\(15\)</span> 减半下去影响的数量级对于 <span class="math inline">\(\log\)</span> 这样级别的下降效益比较低，上面的两个贪心结合枚举第一天和最后一天的分配人数就可以枚举得到最小的天数。</p>

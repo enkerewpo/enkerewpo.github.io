@@ -189,7 +189,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-01 19:37:33 / Modified: 19:38:10" itemprop="dateCreated datePublished" datetime="2021-08-01T19:37:33+08:00">2021-08-01</time>
+              <time title="Created: 2021-08-01 19:37:33 / Modified: 19:46:31" itemprop="dateCreated datePublished" datetime="2021-08-01T19:37:33+08:00">2021-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,8 +215,10 @@
           <h1 id="codeforces-gym-101611d.-decoding-of-varints-题解">Codeforces gym 101611D. Decoding of Varints 题解</h1>
 <h2 id="题解">题解</h2>
 <p>阅读理解题，讲的是把一个大数转换成一种类似 <span class="math inline">\(2^7\)</span> 进制的编码规则，直接看题目中给的样例可以很快理解： <span class="math display">\[
+\begin{aligned}
 260 =(b_0-128)\cdot 2^0+b_1\cdot 2^1 \\
 =(132-128)\cdot 2^0+2\cdot 2^1
+\end{aligned}
 \]</span></p>
 <p>即除了最高的一位 <span class="math inline">\(b_i&lt; 128\)</span> ，其他位均为 <span class="math inline">\(\geq 128\)</span>，我们就按照这个规则对给出的 <span class="math inline">\(b_i\)</span> 进行组合即可。</p>
 <p>题目最后还有一个把无符号转换成有符号的规则 <code>zig-zag</code> ，分奇偶输出即可（注意 <code>ans+1</code> 可能会爆掉 <code>unsigned long long</code> ，直接转换为 <code>__int128</code> 防止溢出）。</p>
