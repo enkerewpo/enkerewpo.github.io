@@ -28,7 +28,7 @@
 <meta property="og:description" content="HDU 5969 最大的位或 题解 题目大意 给定 \(l, r\) ，求所有 \(l\leq a\leq b\leq r\) 的最大 \(a\,|\,b\) 异或值。 题解 我们按二进制逐位考虑，在前缀的部分我们发现，如果上下界该位相等，则没有选择的余地（利用数位 \(\text{trie}\) 树表示比较好理解，转化为一个二进制下的字典树），假设我们扫描到了第一个上下界该位不等的地方，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-01T11:03:41.000Z">
-<meta property="article:modified_time" content="2021-08-01T11:10:39.193Z">
+<meta property="article:modified_time" content="2021-08-01T11:21:37.221Z">
 <meta property="article:author" content="Kvar_ispw17">
 <meta property="article:tag" content="数位统计">
 <meta name="twitter:card" content="summary">
@@ -77,7 +77,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -190,7 +194,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-01 19:03:41 / Modified: 19:10:39" itemprop="dateCreated datePublished" datetime="2021-08-01T19:03:41+08:00">2021-08-01</time>
+              <time title="Created: 2021-08-01 19:03:41 / Modified: 19:21:37" itemprop="dateCreated datePublished" datetime="2021-08-01T19:03:41+08:00">2021-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,8 +223,10 @@
 <h2 id="题解">题解</h2>
 <p>我们按二进制逐位考虑，在前缀的部分我们发现，如果上下界该位相等，则没有选择的余地（利用数位 <span class="math inline">\(\text{trie}\)</span> 树表示比较好理解，转化为一个二进制下的字典树），假设我们扫描到了第一个上下界该位不等的地方，之后一定会在字典树上取连续的一些叶子节点，由于异或只需要尽可能取出 <span class="math inline">\(1\)</span> ，在 <span class="math inline">\(a,b\)</span> 里哪一个取均可，我们发现在字典树该位置以下，一定可以存在一种方案，使得后边的位可以全部得到 <span class="math inline">\(1\)</span>（由 <span class="math inline">\(a\)</span> 或 <span class="math inline">\(b\)</span> 贡献），原因如下：我们想象一个特殊的结构：</p>
 <p><span class="math display">\[
+\begin{aligned}
 10000000 \\
 01111111
+\end{aligned}
 \]</span></p>
 <p>上面这两个数在二进制字典树中正好构成了一个类似“菱形”的结构，且这两个边界刚好相邻。我们发现，在这个菱形内部的所有节点都是可选的，就已经可以组合出每一位的 <span class="math inline">\(1\)</span> 了，由于给定的 <span class="math inline">\(l, r\)</span> 的范围一般要更大，可以理解为菱形的左右两边多了一些部分，对刚才的的性质不产生影响，所以把后边全部取 <span class="math inline">\(1\)</span> 是可行的。</p>
 <h2 id="代码">代码</h2>
